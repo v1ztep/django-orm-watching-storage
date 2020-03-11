@@ -1,4 +1,18 @@
 from django.db import models
+import datetime
+from django.utils.timezone import localtime
+
+def get_duration(visit_time):
+    delta = localtime() - visit_time
+    duration = datetime.timedelta(seconds=delta.total_seconds())
+    return duration
+
+
+def format_duration(duration):
+    hours = int(duration.total_seconds() // 3600)
+    minutes = int((duration.total_seconds() // 60) % 60)
+    corrected_format_duration = '{}ч {}мин'.format(hours, minutes)
+    return corrected_format_duration
 
 
 class Passcard(models.Model):
