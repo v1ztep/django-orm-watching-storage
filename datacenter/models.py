@@ -20,9 +20,8 @@ def format_duration(duration):
 
 
 def is_visit_long(visit, minutes=60):
-    if get_duration(visit).total_seconds() >= minutes*60:
-        return True
-    return False
+    is_strange = get_duration(visit).total_seconds() >= minutes*60
+    return is_strange
 
 
 class Passcard(models.Model):
